@@ -1,5 +1,13 @@
 import sqlite3
 
+CREATE_TEXT = "CREATE TABLE if not EXISTS books (id INTEGER PRIMARY KEY,\
+			   title TEXT, author TEXT, year INTEGER, year_read INTEGER)"
+VIEW_TEXT = "SELECT * FROM books"
+SEARCH_TEXT = "SELECT * FROM books WHERE title=? OR author=? OR year=? OR year_read=?"
+INSERT_TEXT = "INSERT INTO books VALUES (NULL,?,?,?,?)"
+UPDATE_TEXT = "UPDATE books SET title=?, author=?, year=?, year_read=? WHERE id=?"
+DELETE_TEXT = "DELETE FROM books WHERE id=?"
+CLEAR_TEXT = "DELETE FROM books"
 
 class DatabaseConnection():
 
@@ -11,46 +19,40 @@ class DatabaseConnection():
 	
 	def create_table(self):
 		"""Creates a table in the database"""
-		self.cur.execute("CREATE TABLE if not EXISTS books (id INTEGER PRIMARY KEY,\
-						  title TEXT, author TEXT, year INTEGER, year_read INTEGER)")
+		self.cur.execute(CREATE_TEXT)
 		self.conn.commit()
 
 	def view(self):
 		"""Returns all records of the database"""
-		self.cur.execute("SELECT * FROM books")
+		self.cur.execute(VIEW_TEXT)
 		rows = self.cur.fetchall()
 		return rows
 
 	def search(self, title="", author="", year="", year_read=""):
 		 """Returns records of the database that 
 		 	meet the search criteria"""
-		self.cur.execute("SELECT * FROM books WHERE title=? OR author=? OR year=?\
-						  OR year_read=?",(title, author, year, year_read))
+		self.cur.execute(SEARCH_TEXT, (title, author, year, year_read))
 		rows = self.cur.fetchall()
 		return rows
 
 	def insert(self, title, author, year, year_read):
 		"""Inserts a new record into the database"""
-		self.cur.execute("INSERT INTO books VALUES (NULL,?,?,?,?)",\
-					    (title, author, year, year_read))
+		self.cur.execute(INSERT_TEXT, (title, author, year, year_read))
 		self.conn.commit()
 
 	def update(self, id, title, author, year, year_read):
-		"""Updates one of the records of the database 
-			based on its id"""
-		self.cur.execute("UPDATE books SET title=?, author=?, year=?, year_read=?\
-						  WHERE id=?",(title, author, year, year_read, id))
+		"""Updates one of the records of the database based on its id"""
+		self.cur.execute(UPDATE_TEXT,(title, author, year, year_read, id))
 		self.conn.commit()
 
 	def delete(self, id):
-		"""Deletes one of the records of the database
-			based on its id"""
-		self.cur.execute("DELETE FROM books WHERE id=?",(id,))
+		"""Deletes one of the records of the database based on its id"""
+		self.cur.execute(DELETE_TEXT,(id,))
 		self.conn.commit()
 
 	def clear(self):
 		"""Deletes all records from the database"""
-		self.cur.execute("DELETE FROM books")
+		self.cur.execute(CLEAR_TEXT)
 		self.conn.commit()
 
 	def close(self):
