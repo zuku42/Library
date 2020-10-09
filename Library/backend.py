@@ -29,8 +29,7 @@ class DatabaseConnection():
 		return rows
 
 	def search(self, title="", author="", year="", year_read=""):
-		 """Returns records of the database that 
-		 	meet the search criteria"""
+		"""Returns records of the database that meet the search criteria"""
 		self.cur.execute(SEARCH_TEXT, (title, author, year, year_read))
 		rows = self.cur.fetchall()
 		return rows
