@@ -1,10 +1,10 @@
 import sqlite3
 
 def connect(func):
-	def wrapper_connect():
+	def wrapper_connect(*args):
 		conn = sqlite3.connect("library_database.db")
 		cur = conn.cursor()
-		returned_value = func(cur, conn)
+		returned_value = func(cur, conn, *args)
 		conn.close()
 		return returned_value
 	return wrapper_connect
@@ -20,4 +20,9 @@ def view(cursor, connection):
 	rows = cursor.fetchall()
 	return rows
 
-create_table()
+@connect
+def insert(cursor, connection, title, author, year, year_read):
+	cursor.execute("INSERT INTO books VALUES (NULL,?,?,?,?)",(title, author, year, year_read))
+	connection.commit()
+
+print(view())
