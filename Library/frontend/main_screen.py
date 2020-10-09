@@ -2,6 +2,8 @@ import tkinter as tk
 
 
 class MainScreen:
+	from frontend_commands import view_command
+
 	def __init__(self, master):
 		#root of the app
 		self.master = master
@@ -38,11 +40,11 @@ class MainScreen:
 		e4.grid(row=1, column=3)
 
 		#add and position the listbox
-		list1 = tk.Listbox(self.master, height=6, width=35)
-		list1.place(x=20, y=60, width=220, height=120)
+		self.list1 = tk.Listbox(self.master, height=6, width=35)
+		self.list1.place(x=20, y=60, width=220, height=120)
 
 		#add buttons
-		b1 = tk.Button(self.master, text="View all", width=10)
+		b1 = tk.Button(self.master, text="View all", width=10, command=self.view_command)
 		b2 = tk.Button(self.master, text="Search entry", width=10)
 		b3 = tk.Button(self.master, text="Add entry", width=10)
 		b4 = tk.Button(self.master, text="Update", width=10)
