@@ -4,7 +4,6 @@ from sql_commands import *
 
 
 class DatabaseConnection():
-
 	def __init__(self, db_name):
 		"""Establishes connection with the database"""
 		self.conn = sqlite3.connect(db_name)
