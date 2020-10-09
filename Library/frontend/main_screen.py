@@ -1,10 +1,16 @@
+import sys
 import tkinter as tk
 
+sys.path.insert(0, '../backend')
+import backend_methods as lb
 
 class MainScreen:
 	from frontend_commands import view_command
 
 	def __init__(self, master):
+		#establish connection with the database
+		self.db_conn = lb.DatabaseConnection("library_backend.db")
+
 		#root of the app
 		self.master = master
 		self.master.wm_title("My library")

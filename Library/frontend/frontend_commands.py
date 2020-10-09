@@ -2,6 +2,7 @@ import sys
 sys.path.insert(0, '../backend')
 import backend_methods as lb
 from tkinter import *
+
 def get_selected_row(event):
 	global selected_id
 	try:
@@ -19,10 +20,8 @@ def get_selected_row(event):
 		pass
 
 def view_command(self):
-	db_conn = lb.DatabaseConnection("library_backend")
-	db_conn.insert("Olga","Bie",2007,2020)
 	self.list1.delete(0,END)
-	for row in db_conn.view():
+	for row in self.db_conn.view():
 		self.list1.insert(END,row)
 
 def search_command():
