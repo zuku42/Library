@@ -1,3 +1,7 @@
+"""
+A MainScreen class responsible for the design
+and the functionality of the app's main screen.
+"""
 import sys
 
 import tkinter as tk
@@ -7,12 +11,19 @@ from backend_methods import DatabaseConnection
 
 
 class MainScreen:
-
+	#import other methods from main_screen_methods.py
 	from main_screen_methods import (get_selected_row,
 	view_command, search_command, insert_command,
 	delete_command, update_command, clear_command)
 
 	def __init__(self, master):
+		"""
+		An __init__ method responsible for establishing
+		connection with the database, outlining the elements
+		of the main screen and assigning functionalities of
+		the other methods to particular interactive elements 
+		of the main screen.
+		"""
 		#establish connection with the database
 		self.db_conn = DatabaseConnection("library_database.db")
 
@@ -50,12 +61,12 @@ class MainScreen:
 		self.e3.grid(row=1, column=1)
 		self.e4.grid(row=1, column=3)
 
-		#add and position the listbox
+		#add, position and bind a method to the listbox
 		self.list1 = tk.Listbox(self.master, height=6, width=35)
 		self.list1.place(x=20, y=60, width=240, height=120)
-		self.list1.bind('<<ListboxSelect>>',self.get_selected_row)
+		self.list1.bind('<<ListboxSelect>>', self.get_selected_row)
 
-		#add buttons
+		#add buttons and assign them methods
 		b1 = tk.Button(self.master, text="View all", width=10, command=self.view_command)
 		b2 = tk.Button(self.master, text="Search entry", width=10, command=self.search_command)
 		b3 = tk.Button(self.master, text="Add entry", width=10, command=self.insert_command)
