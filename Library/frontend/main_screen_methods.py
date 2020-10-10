@@ -2,10 +2,9 @@ import tkinter as tk
 
 
 def get_selected_row(self, event):
-	global selected_id
 	try:
 		index = self.list1.curselection()[0]
-		selected_id = self.list1.get(index)[0]
+		self.selected_id = self.list1.get(index)[0]
 		self.e1.delete(0, tk.END)
 		self.e1.insert(tk.END, self.list1.get(index)[1])
 		self.e2.delete(0, tk.END)
@@ -33,15 +32,17 @@ def insert_command(self):
 
 def delete_command(self):
 	self.list1.delete(0, tk.END)
-	self.db_conn.delete(selected_id)
+	self.db_conn.delete(self.selected_id)
 	for row in self.db_conn.view():
 		self.list1.insert(tk.END, row)
 
 def update_command(self):
 	self.list1.delete(0, tk.END)
-	self.db_conn.update(selected_id, self.title_text.get(), self.author_text.get(), self.year_text.get(), self.year_read_text.get())
+	self.db_conn.update(self.selected_id, self.title_text.get(), self.author_text.get(), self.year_text.get(), self.year_read_text.get())
 	for row in self.db_conn.view():
 		self.list1.insert(tk.END, row)
 
 def clear_command(self):
 	self.list1.delete(0, tk.END)
+	for entry in (self.e1, self.e2, self.e3, self.e4):
+		entry.delete(0, tk.END)
