@@ -81,7 +81,3 @@ class MainScreen:
 		b4.grid(row=5, column=3)
 		b5.grid(row=6, column=3)
 		b6.grid(row=7, column=3)
-
-root = tk.Tk()
-app = MainScreen(root)
-root.mainloop()

@@ -32,7 +32,7 @@ def get_selected_row(self, event):
 
 def view_command(self):
 	"""A method that inserts all records of
-	   a database into the listbox."""
+	   the database into the listbox."""
 	self.list1.delete(0, tk.END)
 	for row in self.db_conn.view():
 		self.list1.insert(tk.END, row)
