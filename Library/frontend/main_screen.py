@@ -52,7 +52,7 @@ class MainScreen:
 
 		#add and position the listbox
 		self.list1 = tk.Listbox(self.master, height=6, width=35)
-		self.list1.place(x=20, y=60, width=220, height=120)
+		self.list1.place(x=20, y=60, width=240, height=120)
 		self.list1.bind('<<ListboxSelect>>',self.get_selected_row)
 
 		#add buttons
