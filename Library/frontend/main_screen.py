@@ -4,8 +4,6 @@ and the functionality of the app's main screen.
 """
 import tkinter as tk
 
-from backend.backend_methods import DatabaseConnection
-
 
 class MainScreen:
 	#import other methods from main_screen_methods.py
@@ -13,16 +11,16 @@ class MainScreen:
 	view_command, search_command, insert_command, delete_command, 
 	update_command, clear_command)
 
-	def __init__(self, master):
+	def __init__(self, master, db_conn):
 		"""
-		An __init__ method responsible for establishing
-		connection with the database, outlining the elements
-		of the main screen and assigning functionalities of
-		the other methods to particular interactive elements 
-		of the main screen.
+		An __init__ method responsible for outlining the
+		elements of the main screen and assigning functionalities 
+		of the other methods to particular interactive elements 
+		of the main screen using the connection with the database
+		passed as one of the arguments of the class.
 		"""
-		#establish connection with the database
-		self.db_conn = DatabaseConnection("library_database.db")
+		#database connection
+		self.db_conn = db_conn
 
 		#root of the app
 		self.master = master
