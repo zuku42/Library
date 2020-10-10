@@ -1,6 +1,6 @@
 import sqlite3
 
-from sql_commands import *
+from backend.sql_commands import *
 
 
 class DatabaseConnection:

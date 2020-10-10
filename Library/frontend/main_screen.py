@@ -2,19 +2,16 @@
 A MainScreen class responsible for the design
 and the functionality of the app's main screen.
 """
-import sys
-
 import tkinter as tk
 
-sys.path.insert(0, '../backend')
-from backend_methods import DatabaseConnection
+from backend.backend_methods import DatabaseConnection
 
 
 class MainScreen:
 	#import other methods from main_screen_methods.py
-	from main_screen_methods import (get_selected_row,
-	view_command, search_command, insert_command,
-	delete_command, update_command, clear_command)
+	from frontend.main_screen_methods import (get_selected_row,
+	view_command, search_command, insert_command, delete_command, 
+	update_command, clear_command)
 
 	def __init__(self, master):
 		"""
