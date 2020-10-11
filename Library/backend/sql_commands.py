@@ -1,3 +1,8 @@
+"""
+SQL commands contained in this module are used
+in the backend_commands.py module in the
+DatabaseConnection class.
+"""
 CREATE_TEXT = "CREATE TABLE if not EXISTS books (id INTEGER PRIMARY KEY,\
 				title TEXT, author TEXT, year INTEGER, year_read INTEGER)"
 VIEW_TEXT = "SELECT * FROM books"
