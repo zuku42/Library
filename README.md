@@ -11,10 +11,17 @@ books written by Charles Bukowski in 1989).
 
 # Installation
 
-To run the application simpy download the 'main.exe' file and place it in
+To run the application simply download the 'main.exe' file and place it in
 a directory you find fitting. Upon the first start up, the database (named
 "library_database.db") will be created in the same directory. It is not to
 be deleted, as doing so will delete your data irreversibly.
+
+Alternatively, it is also possible to run the application by downloading all
+the code in the Library folder and, while keeping it in the same directory,
+navigating to that directory from the command line and using a 'python' 
+command to run the main.py file. For that to work, however, one needs to have
+Python installed on their computers, along with the following libraries:
+sqlite3, Tkinter. 
 
 # Technology
 
